@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+public class EncuestaEstudiantil {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int excelente = 0;
+        int bueno = 0;
+        int regular = 0;
+        int malo = 0;
+
+        System.out.println("Ingrese las respuestas de 30 estudiantes (1=Excelente, 2=Bueno, 3=Regular, 4=Malo):");
+        for (int i = 1; i <= 30; i++) {
+            System.out.print("Estudiante " + i + ": ");
+            int opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    excelente++;
+                    break;
+                case 2:
+                    bueno++;
+                    break;
+                case 3:
+                    regular++;
+                    break;
+                case 4:
+                    malo++;
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+                    i--; // Repetir el turno para el mismo estudiante
+                    break;
+            }
+        }
+
+        System.out.println("\nJava");
+        System.out.println("Excelente: " + excelente);
+        System.out.println("Bueno: " + bueno);
+        System.out.println("Regular: " + regular);
+        System.out.println("Malo: " + malo);
+
+        // Determinar la opción más votada
+        int maxVotos = excelente;
+        String opcionMasVotada = "Excelente";
+
+        if (bueno > maxVotos) {
+            maxVotos = bueno;
+            opcionMasVotada = "Bueno";
+        }
+        if (regular > maxVotos) {
+            maxVotos = regular;
+            opcionMasVotada = "Regular";
+        }
+        if (malo > maxVotos) {
+            maxVotos = malo;
+            opcionMasVotada = "Malo";
+        }
+
+        System.out.println("Opción más votada: " + opcionMasVotada);
+
+        scanner.close();
+    }
+}
