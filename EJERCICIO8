@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class ControlVentasSemanales {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double ventaTotal = 0;
+        double mayorVenta = Double.MIN_VALUE;
+        int diaMayorVenta = 0;
+
+        System.out.println("Ingrese el monto vendido cada día (7 días):");
+        for (int i = 1; i <= 7; i++) {
+            System.out.print("Día " + i + ": S/ ");
+            double venta = scanner.nextDouble();
+            
+            ventaTotal += venta;
+
+            if (venta > mayorVenta) {
+                mayorVenta = venta;
+                diaMayorVenta = i;
+            }
+        }
+
+        double promedioVentas = ventaTotal / 7.0;
+
+        System.out.println("\nJava");
+        System.out.println("Venta total: S/ " + (int)ventaTotal); // O usa Math.round/printf si hay decimales
+        System.out.printf("Promedio: S/ %.2f\n", promedioVentas);
+        System.out.println("Mayor venta: Día " + diaMayorVenta);
+
+        scanner.close();
+    }
+}
